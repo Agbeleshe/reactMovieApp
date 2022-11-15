@@ -1,0 +1,21 @@
+.header{
+    color: gold;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-top: 20px;
+  }
+
+  .header:hover{
+    cursor: pointer;
+  }
+
+  @media(max-width: 540px){
+    .header{
+        color: gold;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+}
+

@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./component/Header";
+import Search from './component/Search'
+import Card from "./component/Card";
+import{useEffect, useState} from 'react'
+
+
+
 
 function App() {
+const API_URL = 'http://www.omdbapi.com?apikey=95f51dae'
+const [movies, setMovies] = useState([]);
+
+useEffect (()=>{
+  searchMovie('')
+}, [])
+
+const searchMovie = async (title) =>{
+  const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json()
+  
+    setMovies(data.Search)
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header></Header>
+      <Search searchMovie={searchMovie}></Search>
+      {
+        movies?.length > 0
+        ?(
+        <Card movies={movies}></Card>
+        ) : (
+          <h3 style={{
+            color:'white',
+            marginTop: '60px',
+            marginLeft: '60px'
+          }}>No movies selected!</h3>
+        )
+      }
+      
+    </>
   );
 }
 
