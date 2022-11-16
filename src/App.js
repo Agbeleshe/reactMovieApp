@@ -7,7 +7,7 @@ import{useEffect, useState} from 'react'
 
 
 function App() {
-const API_URL = 'http://www.omdbapi.com?apikey=95f51dae'
+const API_URL = 'https://www.omdbapi.com?apikey=95f51dae'
 const [movies, setMovies] = useState([]);
 
 useEffect (()=>{
@@ -34,8 +34,8 @@ const searchMovie = async (title) =>{
           <h3 style={{
             color:'white',
             marginTop: '60px',
-            marginLeft: '60px'
-          }}>No movies selected!</h3>
+            textAlign: 'center'
+          }}>Ops!.. No movies selected!</h3>
         )
       }
       
